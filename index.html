@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Layer Room | Cakes made to order</title>
+  <meta name="description" content="Berry stack, midnight ganache and blush ombre cakes, baked to order." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Crect x=%224%22 y=%2214%22 width=%2224%22 height=%2214%22 rx=%223%22 fill=%22%237a1630%22/%3E%3Crect x=%228%22 y=%226%22 width=%2216%22 height=%229%22 rx=%223%22 fill=%22%23d9e4bf%22/%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Gloock&family=Shrikhand&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="modulepreload" href="vendor/three/three.module.js" />
+  <link rel="preload" href="models/berry_cake.glb" as="fetch" crossorigin />
+</head>
+<body>
+  <a class="skip" href="#after-hero">Skip to content</a>
+
+  <header class="nav">
+    <a class="brand" href="#">Layer Room</a>
+    <nav aria-label="Main">
+      <a href="#cakes">Our cakes</a>
+      <a href="#visit">Visit</a>
+      <a class="nav-cta" href="#order">Order</a>
+    </nav>
+  </header>
+
+  <section class="hero" id="hero" aria-label="Featured cakes">
+    <div class="hero-inner">
+      <canvas class="hero-canvas" id="hero-canvas" aria-hidden="true"></canvas>
+
+      <div class="copy" id="copy">
+        <article class="cake-copy" data-index="0">
+          <h1 class="cake-name">Berry stack</h1>
+          <p class="cake-desc">Three layers of vanilla sponge and whipped cream, piled with whatever berries came in this morning.</p>
+          <p class="cake-price">From RM 128, serves 10</p>
+        </article>
+        <article class="cake-copy" data-index="1" aria-hidden="true">
+          <h2 class="cake-name">Midnight ganache</h2>
+          <p class="cake-desc">Dark chocolate sponge under a glossy 70% ganache, finished with a crown of piped rosettes.</p>
+          <p class="cake-price">From RM 115, serves 10</p>
+        </article>
+        <article class="cake-copy" data-index="2" aria-hidden="true">
+          <h2 class="cake-name">Blush ombre</h2>
+          <p class="cake-desc">Three tiers of vintage piping fading from sky blue to blush. Made to order for birthdays and weddings.</p>
+          <p class="cake-price">From RM 260, serves 30</p>
+        </article>
+        <a class="order-btn" href="#order" data-cake="Berry stack">Order this cake</a>
+      </div>
+
+      <ol class="picker" aria-label="Choose a cake">
+        <li><button type="button" data-go="0" aria-current="true">Berry stack</button></li>
+        <li><button type="button" data-go="1">Midnight ganache</button></li>
+        <li><button type="button" data-go="2">Blush ombre</button></li>
+      </ol>
+
+      <p class="loading" id="loading" role="status">Plating the cakes…</p>
+    </div>
+  </section>
+
+  <main id="after-hero" class="after">
+    <section class="cakes" id="cakes" aria-labelledby="cakes-title">
+      <div class="cakes-head">
+        <h2 id="cakes-title">Our cakes</h2>
+        <p>Every cake is baked to order. Pick one and tell us the date.</p>
+        <div class="cakes-nav">
+          <button type="button" class="cakes-arrow" data-dir="-1" aria-label="Previous cakes" aria-controls="cake-track">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" /></svg>
+          </button>
+          <button type="button" class="cakes-arrow" data-dir="1" aria-label="Next cakes" aria-controls="cake-track">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" /></svg>
+          </button>
+        </div>
+      </div>
+
+      <ul class="cake-track" id="cake-track" tabindex="0" aria-label="Cakes, scroll sideways for more">
+        <li class="cake-card">
+          <div class="cake-card-img"><img src="images/cakes/sprinkle-party.webp" alt="A round white cake with piped cream, rainbow sprinkles and a cherry" loading="lazy" decoding="async" /></div>
+          <h3 class="cake-card-name">Sprinkle party</h3>
+          <p class="cake-card-price">RM 98 <span>serves 8</span></p>
+          <a class="cake-card-order" href="#order" data-cake="Sprinkle party" aria-label="Order Sprinkle party">Order</a>
+        </li>
+        <li class="cake-card">
+          <div class="cake-card-img"><img src="images/cakes/matcha-strawberry.webp" alt="A matcha-green cake topped with glazed strawberries" loading="lazy" decoding="async" /></div>
+          <h3 class="cake-card-name">Matcha strawberry</h3>
+          <p class="cake-card-price">RM 138 <span>serves 8</span></p>
+          <a class="cake-card-order" href="#order" data-cake="Matcha strawberry" aria-label="Order Matcha strawberry">Order</a>
+        </li>
+        <li class="cake-card">
+          <div class="cake-card-img"><img src="images/cakes/chocolate-crumble.webp" alt="A two-layer chocolate sponge cake with cream rosettes and chocolate crumbs" loading="lazy" decoding="async" /></div>
+          <h3 class="cake-card-name">Chocolate crumble</h3>
+          <p class="cake-card-price">RM 118 <span>serves 10</span></p>
+          <a class="cake-card-order" href="#order" data-cake="Chocolate crumble" aria-label="Order Chocolate crumble">Order</a>
+        </li>
+        <li class="cake-card">
+          <div class="cake-card-img"><img src="images/cakes/strawberry-shortcake.webp" alt="A white cream cake crowned with fresh strawberries" loading="lazy" decoding="async" /></div>
+          <h3 class="cake-card-name">Strawberry shortcake</h3>
+          <p class="cake-card-price">RM 128 <span>serves 8</span></p>
+          <a class="cake-card-order" href="#order" data-cake="Strawberry shortcake" aria-label="Order Strawberry shortcake">Order</a>
+        </li>
+        <li class="cake-card">
+          <div class="cake-card-img"><img src="images/cakes/blush-ombre.webp" alt="A three-tier cake with blue and pink vintage piping" loading="lazy" decoding="async" /></div>
+          <h3 class="cake-card-name">Blush ombre</h3>
+          <p class="cake-card-price">RM 260 <span>serves 30</span></p>
+          <a class="cake-card-order" href="#order" data-cake="Blush ombre" aria-label="Order Blush ombre">Order</a>
+        </li>
+        <li class="cake-card">
+          <div class="cake-card-img"><img src="images/cakes/midnight-ganache.webp" alt="A glossy chocolate ganache cake with piped rosettes" loading="lazy" decoding="async" /></div>
+          <h3 class="cake-card-name">Midnight ganache</h3>
+          <p class="cake-card-price">RM 115 <span>serves 10</span></p>
+          <a class="cake-card-order" href="#order" data-cake="Midnight ganache" aria-label="Order Midnight ganache">Order</a>
+        </li>
+        <li class="cake-card">
+          <div class="cake-card-img"><img src="images/cakes/berry-stack.webp" alt="A naked three-layer sponge cake piled with fresh berries" loading="lazy" decoding="async" /></div>
+          <h3 class="cake-card-name">Berry stack</h3>
+          <p class="cake-card-price">RM 128 <span>serves 10</span></p>
+          <a class="cake-card-order" href="#order" data-cake="Berry stack" aria-label="Order Berry stack">Order</a>
+        </li>
+      </ul>
+      <div class="cakes-progress" aria-hidden="true"><span id="cakes-progress-bar"></span></div>
+    </section>
+    <!-- Sample contact details: replace with the bakery's real ones -->
+    <section class="visit" id="visit" aria-labelledby="visit-title">
+      <div class="visit-copy">
+        <h2 id="visit-title">Come say hello</h2>
+        <p class="visit-intro">Pick up your order, or drop by for a slice from the counter.</p>
+
+        <dl class="visit-list">
+          <div class="visit-item">
+            <dt>Address</dt>
+            <dd>
+              <address>No. 8, Jalan Manis<br />50450 Kuala Lumpur</address>
+              <a class="visit-link" href="https://www.google.com/maps/search/?api=1&amp;query=No.%208%2C%20Jalan%20Manis%2C%2050450%20Kuala%20Lumpur" target="_blank" rel="noopener">Get directions</a>
+            </dd>
+          </div>
+          <div class="visit-item">
+            <dt>Phone</dt>
+            <dd><a class="visit-value" href="tel:+60123456789">012-345 6789</a></dd>
+          </div>
+          <div class="visit-item">
+            <dt>Email</dt>
+            <dd><a class="visit-value" href="mailto:hello@layerroom.my">hello@layerroom.my</a></dd>
+          </div>
+        </dl>
+      </div>
+
+      <div class="visit-cake" aria-hidden="true">
+        <img src="images/cakes/midnight-ganache.webp" alt="" loading="lazy" decoding="async" />
+      </div>
+    </section>
+    <section class="order" id="order" aria-labelledby="order-title">
+      <div class="order-intro">
+        <h2 id="order-title">Order a cake</h2>
+        <p>Tell us which cake and how to reach you. We'll confirm the date and pickup time with you on WhatsApp.</p>
+        <figure class="order-pick" id="order-pick" hidden>
+          <img id="order-pick-img" src="" alt="" />
+          <figcaption id="order-pick-cap"></figcaption>
+        </figure>
+      </div>
+
+      <form class="order-form" id="order-form" novalidate>
+        <div class="field">
+          <label for="f-cake">Cake</label>
+          <select id="f-cake" name="cake" required aria-describedby="e-cake">
+            <option value="">Choose a cake</option>
+              <option value="Sprinkle party" data-img="images/cakes/sprinkle-party.webp" data-price="RM 98">Sprinkle party, RM 98</option>
+              <option value="Matcha strawberry" data-img="images/cakes/matcha-strawberry.webp" data-price="RM 138">Matcha strawberry, RM 138</option>
+              <option value="Chocolate crumble" data-img="images/cakes/chocolate-crumble.webp" data-price="RM 118">Chocolate crumble, RM 118</option>
+              <option value="Strawberry shortcake" data-img="images/cakes/strawberry-shortcake.webp" data-price="RM 128">Strawberry shortcake, RM 128</option>
+              <option value="Blush ombre" data-img="images/cakes/blush-ombre.webp" data-price="RM 260">Blush ombre, RM 260</option>
+              <option value="Midnight ganache" data-img="images/cakes/midnight-ganache.webp" data-price="RM 115">Midnight ganache, RM 115</option>
+              <option value="Berry stack" data-img="images/cakes/berry-stack.webp" data-price="RM 128">Berry stack, RM 128</option>
+          </select>
+          <p class="field-error" id="e-cake"></p>
+        </div>
+        <div class="field">
+          <label for="f-name">Your name</label>
+          <input id="f-name" name="name" type="text" autocomplete="name" required aria-describedby="e-name" />
+          <p class="field-error" id="e-name"></p>
+        </div>
+        <div class="field">
+          <label for="f-phone">Phone number</label>
+          <input id="f-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="012-345 6789" required aria-describedby="e-phone" />
+          <p class="field-error" id="e-phone"></p>
+        </div>
+        <div class="field">
+          <label for="f-note">Special request <span>(optional)</span></label>
+          <textarea id="f-note" name="note" rows="4" placeholder="Happy birthday Mei, less sweet, no nuts"></textarea>
+        </div>
+        <button type="submit" class="order-submit">Send order on WhatsApp</button>
+        <p class="order-status" id="order-status" role="status"></p>
+      </form>
+    </section>
+  </main>
+
+  <script src="vendor/gsap/gsap.min.js"></script>
+  <script src="vendor/gsap/ScrollTrigger.min.js"></script>
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "./vendor/three/three.module.js",
+        "three/addons/": "./vendor/three/addons/"
+      }
+    }
+  </script>
+  <script type="module" src="js/hero.js"></script>
+  <script src="js/carousel.js" defer></script>
+  <script src="js/order.js" defer></script>
+</body>
+</html>
