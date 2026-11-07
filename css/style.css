@@ -48,6 +48,7 @@ a { color: inherit; }
 .skip:focus { top: 1rem; }
 
 /* ---------- Nav ---------- */
+/* Lives inside the pinned hero, so it stays through all three cakes */
 .nav {
   position: absolute;
   inset: 0 0 auto 0;
