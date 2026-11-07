@@ -5,6 +5,8 @@ A static bakery site: a hero that turns three 3D cakes on a wheel as you scroll,
 Live site: https://zoeworks678.github.io/layer-room/
 
 > Sample content to replace before launch: the bakery name "Layer Room", cake prices, the address/phone/email in the Visit section (`index.html`), and the WhatsApp number at the top of `js/order.js`.
+>
+> The order form is in **demo mode**: it shows the WhatsApp message an order would create but doesn't send anything. To take real orders, set `DEMO = false` in `js/order.js`.
 
 ## Run it locally
 

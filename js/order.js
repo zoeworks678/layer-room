@@ -1,8 +1,11 @@
 /* Order form: pre-fills the cake from any Order button, validates,
-   then hands the order to WhatsApp as a ready-to-send message. */
+   then shows the WhatsApp message the order would send.
+   DEMO MODE: nothing is sent and WhatsApp is not opened.
+   To go live, set DEMO = false and put the real number in WHATSAPP_NUMBER. */
 (() => {
   // The bakery's WhatsApp number, international format without "+" (sample number)
   const WHATSAPP_NUMBER = '60123456789';
+  const DEMO = true;
 
   const form = document.getElementById('order-form');
   if (!form) return;
@@ -80,7 +83,21 @@
       `Phone: ${phone.value.trim()}`,
     ];
     if (note.value.trim()) lines.push(`Special request: ${note.value.trim()}`);
-    const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(lines.join('\n'))}`;
+    const message = lines.join('\n');
+
+    if (DEMO) {
+      status.innerHTML = '';
+      const head = document.createElement('p');
+      head.className = 'order-status-head';
+      head.textContent = "This site is a demo, so nothing was sent. Here's the WhatsApp message your order would create:";
+      const preview = document.createElement('pre');
+      preview.className = 'order-preview';
+      preview.textContent = message;
+      status.append(head, preview);
+      return;
+    }
+
+    const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
 
     // Open WhatsApp in a new tab; keep a link in case the browser blocks it
     const a = document.createElement('a');

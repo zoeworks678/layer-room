@@ -601,3 +601,18 @@ a { color: inherit; }
 @media (prefers-reduced-motion: reduce) {
   .order-pick.is-new img { animation: none; }
 }
+
+/* Demo confirmation: preview of the WhatsApp message */
+.order-status-head { margin: 0 0 0.6rem; font-weight: 600; }
+.order-preview {
+  margin: 0;
+  padding: 1rem 1.15rem;
+  background: #dcf8c6;                /* WhatsApp's outgoing-bubble green */
+  color: #1f2c1a;
+  border-radius: 14px 14px 4px 14px;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
